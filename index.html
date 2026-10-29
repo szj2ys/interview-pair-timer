@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A free offline timer for a 15-minute paired English interview practice session. Clear speaking turns, follow-up prompts, pause controls and a printable worksheet.">
+<title>Interview Pair Timer — a 15-minute practice session</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#142c3b;background:#f4f6f5;font-synthesis:none;line-height:1.5}*{box-sizing:border-box}body{margin:0}main{max-width:1000px;margin:auto;padding:32px 20px}a{color:#126454;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,46px);line-height:1.12;letter-spacing:-.035em;max-width:650px;margin:12px 0}h2{font-size:20px;margin-top:0}p{max-width:760px}.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#476459;font-weight:700}.lead{font-size:18px;color:#4b5d66}.panel{border:1px solid #c9d6d1;background:#fff;border-radius:18px;padding:28px;margin:24px 0}.timer-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:30px}.time{font-size:clamp(64px,11vw,112px);font-variant-numeric:tabular-nums;font-weight:750;letter-spacing:-.05em;line-height:1.1;margin:10px 0 20px}.status{font-size:14px;color:#4c6258;font-weight:650}.controls{display:flex;flex-wrap:wrap;gap:10px}button{font:inherit;border:1px solid #678477;border-radius:9px;min-height:44px;padding:10px 16px;background:#fff;color:#1c4034;cursor:pointer}button.primary{background:#155e4d;color:white;border-color:#155e4d;font-weight:700}button:disabled{opacity:.42;cursor:default}button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #bc6d29;outline-offset:3px}.prompt{font-size:21px;line-height:1.4;margin:12px 0}.cue{padding:15px 18px;background:#edf5f0;border-left:4px solid #5b8e75;border-radius:0 9px 9px 0}.muted{color:#52666f;font-size:14px}details{border-top:1px solid #d9e2dd;padding:18px 0}summary{cursor:pointer;font-weight:650}ol{padding-left:22px}li{padding:6px 0}li.active{font-weight:750;color:#155e4d}label{display:block;font-weight:650;margin-bottom:10px}textarea{width:100%;resize:vertical;min-height:125px;border:1px solid #93aaa0;border-radius:9px;padding:12px;font:inherit;line-height:1.5}.bottom{display:flex;gap:16px;flex-wrap:wrap;align-items:center}.tag{font-size:13px;background:#e5eee8;border-radius:20px;padding:5px 10px}.skip{position:absolute;left:-10000px}.skip:focus{left:20px;top:10px;background:white;padding:10px;z-index:2}footer{padding:20px 0;border-top:1px solid #c9d6d1;font-size:14px}#announcement{min-height:24px}.print-title,.print-notes{display:none}@media(max-width:650px){main{padding:24px 16px}.panel{padding:21px}.timer-layout{grid-template-columns:1fr;gap:22px}.time{font-size:86px;margin:4px 0 16px}.lead{font-size:17px}.controls button{flex:1}h1{font-size:34px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}@media print{body{background:white;color:black}main{max-width:none;padding:0}.panel{padding:14px;border-radius:0}.controls,.time,.status,#announcement,.no-print{display:none}.timer-layout{display:block}details{display:block}details>summary{display:none}details>*{display:block!important}.print-title{display:block}textarea{display:none}.panel{break-inside:avoid}.notes-panel{break-inside:auto}.print-notes{display:block;min-height:160px;padding:12px;border:1px solid #555;white-space:pre-wrap;overflow-wrap:anywhere;overflow:visible;break-inside:auto}a{color:black}footer{font-size:10pt}}
+</style>
+</head>
+<body>
+<a class="skip" href="#session">Skip to session timer</a>
+<main>
+<header>
+<div class="eyebrow">Two people · one true example each · 15 active minutes</div>
+<h1>Practise the answer.<br>Then the next question.</h1>
+<p class="lead">A simple turn timer for English interview practice. Use a true experience, listen for a missing detail, and give your partner time to think.</p>
+<p class="muted">No account, recording, microphone or upload. The timer pauses at every step. Take extra time whenever you need it.</p>
+</header>
+<section class="panel" id="session" aria-labelledby="step-title">
+<div class="timer-layout">
+<div>
+<div class="status" id="status">Ready · step 1 of 8</div>
+<div class="time" id="clock" aria-label="3 minutes remaining">03:00</div>
+<div class="controls">
+<button class="primary" id="toggle" type="button">Start step</button>
+<button id="next" type="button">Next step</button>
+<button id="reset" type="button">Reset</button>
+</div>
+<p class="muted no-print">The display stays accurate if the tab is backgrounded. Returning after a step ends will not silently start another turn.</p>
+</div>
+<div>
+<h2 id="step-title">Both: choose one true example</h2>
+<p class="prompt" id="prompt">Think of a problem from work, study, volunteering or a project. What did you personally do?</p>
+<div class="cue" id="cue">Choose what you are comfortable sharing. Leave out private names and confidential details.</div>
+<p id="announcement" role="status" aria-live="polite" aria-atomic="true">Agree who will speak first, then start.</p>
+</div>
+</div>
+</section>
+<section class="panel" aria-labelledby="use-title">
+<h2 id="use-title">Make it useful for both people</h2>
+<p>Speaker: explain the setting, your own action, and the result you can support. Listener: ask one follow-up, then name a detail you understood and a point that still needs clarity.</p>
+<details id="plan"><summary>The full 15-minute plan</summary><ol id="steps">
+<li class="active">Both prepare — 3 minutes</li><li>Person A answers — 2 minutes</li><li>Person B asks a follow-up — 2 minutes</li><li>Person B gives feedback — 1 minute</li><li>Person B answers — 2 minutes</li><li>Person A asks a follow-up — 1 minute</li><li>Person A gives feedback — 1 minute</li><li>Both try a clearer answer — 3 minutes</li>
+</ol><p class="muted">This is a flexible practice routine, not an assessment. The suggested timings total 15 active minutes; pauses and transition time are additional.</p></details>
+<details><summary>Choose a follow-up question</summary><ul><li>What did you do yourself?</li><li>Why did you choose that approach?</li><li>How did you check whether it helped?</li><li>What would you do differently next time?</li></ul><p>If you need thinking time: “Let me think for a moment.” If the question is unclear: “Could you say that another way?”</p></details>
+<div class="bottom"><a href="english-interview-follow-up-pairs.pdf" download>Download the one-page worksheet (PDF)</a><span class="tag">Works offline after downloading this folder</span></div>
+</section>
+<section class="panel notes-panel" aria-labelledby="notes-title">
+<h2 id="notes-title">Keep one useful note</h2>
+<label for="notes">A detail to keep, and one thing to clarify next time</label>
+<textarea id="notes" placeholder="Use brief notes without private names or confidential information."></textarea>
+<div id="print-notes" class="print-notes"></div>
+<p class="muted">Notes stay only in this open page. Reloading or closing the page clears them. Use Print notes if you want to keep a copy; Reset affects the timer only.</p>
+<button type="button" id="print" class="no-print">Print notes</button>
+</section>
+<footer>
+<p>Created by MakeInterview. For more answer frames and follow-up pairs, read the <a href="https://makeinterview.com/en/blog/job-interview-in-english">free English interview practice guide</a>. This timer works independently of the AI interview service.</p>
+<p><a href="https://szj2ys.github.io/peer-interview-session-plans/">Prefer another group format? Open the existing peer-session handbook.</a> · <a href="https://github.com/szj2ys/interview-pair-timer">Source and offline download</a></p>
+<p>Practice guidance, not a hiring prediction. No analytics, external scripts or stored participant data.</p>
+</footer>
+</main>
+<script>
+'use strict';
+const stages=[
+ {seconds:180,title:'Both: choose one true example',prompt:'Think of a problem from work, study, volunteering or a project. What did you personally do?',cue:'Choose what you are comfortable sharing. Leave out private names and confidential details.'},
+ {seconds:120,title:'Person A: answer the question',prompt:'Tell me about a time you solved a problem.',cue:'Try: The problem was… My part was… I decided to… The result was… Use true details; do not invent numbers.'},
+ {seconds:120,title:'Person B: ask one follow-up',prompt:'Pick one detail you want to understand better.',cue:'Ask what Person A did, why they chose it, or how they checked the result. Give them thinking time.'},
+ {seconds:60,title:'Person B: give specific feedback',prompt:'Name one clear detail and one point you still wanted to understand.',cue:'Describe what you heard. Avoid judging the person or predicting whether they would get hired.'},
+ {seconds:120,title:'Person B: answer the question',prompt:'Tell me about a time you solved a problem.',cue:'Switch roles. Use your own true example; you do not need a dramatic success story.'},
+ {seconds:60,title:'Person A: ask one follow-up',prompt:'Which detail would help you understand the example?',cue:'Ask one question. It is fine to pause the timer for more thinking time.'},
+ {seconds:60,title:'Person A: give specific feedback',prompt:'What was clear? What needed another detail?',cue:'Point to a sentence or detail, then suggest one change. The speaker decides what to use.'},
+ {seconds:180,title:'Both: try a clearer answer',prompt:'Take turns saying the answer again, with one useful change.',cue:'Finish by choosing a phrase or detail to practise next time. Keep claims and numbers truthful.'}
+];
+const ui={clock:document.querySelector('#clock'),status:document.querySelector('#status'),title:document.querySelector('#step-title'),prompt:document.querySelector('#prompt'),cue:document.querySelector('#cue'),toggle:document.querySelector('#toggle'),next:document.querySelector('#next'),announcement:document.querySelector('#announcement')};
+let position=0,remaining=stages[0].seconds*1000,deadline=0,running=false,complete=false;
+function render(){
+ const sec=Math.max(0,Math.ceil(remaining/1000));ui.clock.textContent=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');ui.clock.setAttribute('aria-label',Math.floor(sec/60)+' minutes '+sec%60+' seconds remaining');
+ ui.status.textContent=complete?'Session complete':(running?'Running':remaining===0?'Step finished':'Ready or paused')+' · step '+(position+1)+' of '+stages.length;
+ ui.toggle.textContent=complete?'Restart session':running?'Pause':remaining===0?'Continue to next step':'Start step';ui.next.disabled=complete;
+ document.querySelectorAll('#steps li').forEach((li,i)=>{li.classList.toggle('active',!complete&&i===position);if(!complete&&i===position)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});
+}
+function selectStep(i){position=i;remaining=stages[i].seconds*1000;running=false;complete=false;ui.title.textContent=stages[i].title;ui.prompt.textContent=stages[i].prompt;ui.cue.textContent=stages[i].cue;ui.announcement.textContent='Step '+(i+1)+' is ready. Start when both people are ready.';render();}
+function nextStep(){if(position<stages.length-1){selectStep(position+1);}else{running=false;remaining=0;complete=true;ui.title.textContent='Practice complete';ui.prompt.textContent='Keep one useful detail and one next step.';ui.cue.textContent='Thank your partner. You can print your notes before closing this page.';ui.announcement.textContent='Session complete. Notes remain until you reload or close the page.';render();}}
+ui.toggle.addEventListener('click',()=>{if(complete){selectStep(0);return;}if(running){remaining=Math.max(0,deadline-performance.now());running=false;ui.announcement.textContent='Paused. Take the time you need.';}else if(remaining===0){nextStep();return;}else{deadline=performance.now()+remaining;running=true;ui.announcement.textContent='Step started.';}render();});
+ui.next.addEventListener('click',nextStep);
+document.querySelector('#reset').addEventListener('click',()=>{selectStep(0);ui.announcement.textContent='Timer reset. Your notes were kept.';});
+function preparePrint(){
+ document.querySelector('#print-notes').textContent=document.querySelector('#notes').value;
+ if(running){remaining=Math.max(0,deadline-performance.now());running=false;render();}
+}
+window.addEventListener('beforeprint',preparePrint);
+document.querySelector('#print').addEventListener('click',()=>{preparePrint();window.print();});
+setInterval(()=>{if(!running)return;remaining=Math.max(0,deadline-performance.now());if(remaining===0){running=false;ui.announcement.textContent=position===stages.length-1?'Last step finished. Choose Next step to finish the session.':'Step finished. Choose Continue when you are ready.';}render();},200);
+render();
+</script>
+</body></html>
